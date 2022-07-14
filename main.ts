@@ -1,21 +1,5 @@
-let mySprite = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . e e e . . . . . . . 
-    . . . . f f f f f . . . . . . . 
-    . . . . f . . d d . . . . . . . 
-    . . . . . . 6 d d . f f . . . . 
-    . . . . . . f f f f f f f f f f 
-    . . . . . . 6 f f 6 6 f . . . . 
-    . . . . . . 6 6 6 f 6 6 . . . . 
-    . . . . . . 6 6 f f . . . . . . 
-    . . . . . . f f 6 6 . . . . . . 
-    . . . . . 6 f 6 6 f . . . . . . 
-    . . . . . 6 6 . . 6 . . . . . . 
-    . . . . . 6 . . . 6 . . . . . . 
-    . . . f f 6 . . . f . . . . . . 
-    . . . f . . . . . f f . . . . . 
-    `, SpriteKind.Player)
+let projectile: Sprite = null
+let mySprite = sprites.create(assets.image`SS`, SpriteKind.Player)
 tiles.setCurrentTilemap(tilemap`level1`)
 scene.cameraFollowSprite(mySprite)
 forever(function () {
@@ -27,6 +11,25 @@ forever(function () {
         mySprite.vx = -70
     } else if (controller.right.isPressed()) {
         mySprite.vx = 70
+    } else if (controller.A.isPressed()) {
+        projectile = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 1 1 . . . . . . . 
+            . . . . . . . 1 1 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, mySprite, 100, 0)
     } else {
         mySprite.vx = 0
         mySprite.vy = 0
