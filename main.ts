@@ -1,12 +1,46 @@
 namespace SpriteKind {
     export const LIFE = SpriteKind.create()
 }
-let projectile2: Sprite = null
-let projectile: Sprite = null
 let HEALTH = 3
 let sNAKE = sprites.create(assets.image`SS`, SpriteKind.Player)
 let gURAD = sprites.create(assets.image`GURD`, SpriteKind.Enemy)
 let bULLET = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . 1 1 . . . . . . . 
+    . . . . . . . 1 1 . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Projectile)
+let projectile = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . 1 1 . . . . . . . 
+    . . . . . . . 1 1 . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Projectile)
+let projectile2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -61,6 +95,7 @@ forever(function () {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `, sNAKE, 150, 0)
+        pause(500)
     } else if (controller.A.isPressed() && sNAKE.image.equals(assets.image`SS0`)) {
         projectile2 = sprites.createProjectileFromSprite(img`
             . . . . . . . . . . . . . . . . 
@@ -80,6 +115,7 @@ forever(function () {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `, sNAKE, -150, 0)
+        pause(500)
     } else {
         sNAKE.vx = 0
     }
@@ -91,19 +127,35 @@ forever(function () {
         pause(500)
     }
     if (HEALTH == 0) {
-        game.over(false, effects.dissolve)
+        game.over(false, effects.confetti)
     }
 })
 forever(function () {
-    if (projectile2.overlapsWith(gURAD) || projectile.overlapsWith(gURAD)) {
-        let mySprite: Sprite = null
-        mySprite.destroy()
-    }
-})
-forever(function () {
-    if (true) {
-        bULLET.setPosition(gURAD.x, gURAD.y)
+    if (gURAD) {
+        bULLET = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 1 1 . . . . . . . 
+            . . . . . . . 1 1 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, gURAD, 150, 0)
         pause(500)
-        bULLET.setVelocity(50, 0)
+    }
+})
+forever(function () {
+    if (projectile2.overlapsWith(gURAD)) {
+        bULLET.destroy()
+        gURAD.destroy(effects.spray, 500)
     }
 })
