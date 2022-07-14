@@ -4,6 +4,16 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "SS"
     },
+    "image2": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAA8AAAAAAAAADwAAAAAAAAD/BgAAAAAA8P8PAAAAAADw/wYAAAAAAAD/BgAA8AD+3f/2b2//AP7dZvYGAAAA/m3//28PAADwAP8PAAYAAAAPAAAADwAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "SS0"
+    },
+    "image1": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA8A8AAAAAAADwDwAAAAAA4P8PAPAA8A/u/u/u/wDw3e7+7wAAAPDd7v/vAPAAIP/u7u7u/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "GURD"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
