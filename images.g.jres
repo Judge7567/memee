@@ -44,6 +44,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "proj"
     },
+    "image3": {
+        "data": "hwQWABAAAAAAAAAAAAAADwAAAAAAAAD/AAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAN8AAAAAAAAg3wAAAAAAAPffAAAAAABw198AAAAAAHDX7wAAAAAAAAX/AAAAAAAAVe4AAAAAAAAA4AAAAAAAAADgAAAAAAAAAOAAAAAAAAAA8AAAAAAAAADgAAAAAAAAAOAAAAAAAAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "sniper"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
