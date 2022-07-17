@@ -60,6 +60,9 @@ tiles.placeOnTile(sNAKE, tiles.getTileLocation(1, 38))
 tiles.placeOnTile(gURAD, tiles.getTileLocation(4, 30))
 forever(function () {
     sNAKE.vy = 70
+    if (controller.up.isPressed() && (sNAKE.tileKindAt(TileDirection.Bottom, assets.tile`whatathrill1`) || sNAKE.tileKindAt(TileDirection.Bottom, assets.tile`whatathrill2`))) {
+        sNAKE.vy = -150
+    }
     if (controller.up.isPressed() && (sNAKE.tileKindAt(TileDirection.Bottom, assets.tile`myTile`) || sNAKE.tileKindAt(TileDirection.Bottom, assets.tile`myTi`))) {
         sNAKE.vy = -150
         pause(150)
@@ -89,16 +92,12 @@ forever(function () {
     }
 })
 forever(function () {
-    if (projectile2.overlapsWith(gURAD) || projectile.overlapsWith(gURAD)) {
-        gURAD.destroy(effects.spray, 500)
-        bULLET.destroy()
-    }
+    GURDshoot()
+    GURDshoot2()
 })
 forever(function () {
     Ded1()
     ded2()
-    GURDshoot()
-    GURDshoot2()
 })
 forever(function () {
     if (sNAKE.overlapsWith(bULLET) || sNAKE.overlapsWith(bullet2)) {
@@ -107,7 +106,7 @@ forever(function () {
         pause(500)
     }
     if (HEALTH <= 0) {
-        game.over(false, effects.dissolve)
+        game.over(false, effects.confetti)
     }
 })
 forever(function () {
